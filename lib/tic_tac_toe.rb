@@ -67,7 +67,7 @@ end
 
 def computer_turn
     
-    
+   sleep(3) 
   if find_two("O")
       fill_row
   elsif 
@@ -79,6 +79,16 @@ def computer_turn
     display_board
 
 end
+    
+def make_a_turn
+    if current_player=="X"
+        turn
+    elsif current_player=="O"
+        computer_turn
+    end
+end
+    
+    
 
  def turn_count
    counter =0
@@ -92,11 +102,11 @@ end
    end
    return counter
  end
-=begin
+
  def current_player
    turn_count.even? ? "X" : "O"
    end
-=end
+
 
 def find_two (character)
     WIN_COMBINATIONS.any? do |win_combination|
@@ -182,9 +192,8 @@ end
    def play
 
       while !over?
-      turn
-      sleep(3)
-      computer_turn
+      make_a_turn
+      
     end
   # require "pry"
   #   binding.pry
